@@ -1,0 +1,59 @@
+{
+  "name": "@lp-labs/async-channel",
+  "version": "0.1.0",
+  "description": "A bounded FIFO async channel with backpressure and cancellation.",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit && npm run build && tsc -p tsconfig.types.json",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "prepack": "npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Libin Prasanth",
+    "url": "https://www.linkedin.com/in/libinprasanth/"
+  },
+  "funding": {
+    "type": "paypal",
+    "url": "https://www.paypal.me/LibinPrasanth"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "async",
+    "channel",
+    "queue",
+    "typescript"
+  ]
+}
